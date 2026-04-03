@@ -9,9 +9,12 @@ export default {
       colors: {
         background: '#000000',
         foreground: '#ffffff',
-        muted: '#1a1a1a',
+        muted: {
+          DEFAULT: '#1a1a1a',
+          foreground: '#a0a0a0',
+        },
         accent: '#333333',
-        border: '#222222',
+        'app-border': '#222222',
       },
     },
   },

@@ -1,25 +1,25 @@
 {
   "name": "shixuka11ven.github.io",
+  "private": true,
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "type": "module",
+  "license": "MIT",
+  "homepage": "https://shixuka11ven.github.io/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shixuka11ven/shixuka11ven.github.io.git"
+  },
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/shixuka11ven/shixuka11ven.github.io.git"
+  "dependencies": {
+    "@supabase/supabase-js": "^2.101.1",
+    "lucide-react": "^1.7.0",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "module",
-  "bugs": {
-    "url": "https://github.com/shixuka11ven/shixuka11ven.github.io/issues"
-  },
-  "homepage": "https://shixuka11ven.github.io/",
   "devDependencies": {
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
@@ -29,14 +29,5 @@
     "tailwindcss": "^3.4.19",
     "typescript": "^6.0.2",
     "vite": "^8.0.3"
-  },
-  "dependencies": {
-    "@supabase/supabase-js": "^2.101.1",
-    "clsx": "^2.1.1",
-    "framer-motion": "^12.38.0",
-    "lucide-react": "^1.7.0",
-    "react": "^19.2.4",
-    "react-dom": "^19.2.4",
-    "tailwind-merge": "^3.5.0"
   }
 }
