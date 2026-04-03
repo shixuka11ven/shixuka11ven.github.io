@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/shixuka10en/shixuka10en.github.io.git"
+    "url": "git+https://github.com/shixuka11ven/shixuka11ven.github.io.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "module",
   "bugs": {
-    "url": "https://github.com/shixuka10en/shixuka10en.github.io/issues"
+    "url": "https://github.com/shixuka11ven/shixuka11ven.github.io/issues"
   },
   "homepage": "https://shixuka11ven.github.io/",
   "devDependencies": {
