@@ -11,7 +11,7 @@ export function Login() {
   const [isForgotPassword, setIsForgotPassword] = useState(false);
   const [emailSent, setEmailSent] = useState(false);
   const [otpToken, setOtpToken] = useState('');
-  const [otpValues, setOtpValues] = useState<string[]>(Array(8).fill(''));
+  const [otpValues, setOtpValues] = useState<string[]>(Array(6).fill(''));
   const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
 
   const handleOtpChange = (index: number, value: string) => {
@@ -22,7 +22,7 @@ export function Login() {
     setOtpValues(newOtp);
     setOtpToken(newOtp.join(''));
 
-    if (digit && index < 7) {
+    if (digit && index < 5) {
       inputRefs.current[index + 1]?.focus();
     }
   };
@@ -35,7 +35,7 @@ export function Login() {
 
   const handlePaste = (e: React.ClipboardEvent) => {
     e.preventDefault();
-    const pastedData = e.clipboardData.getData('text').replace(/\D/g, '').slice(0, 8);
+    const pastedData = e.clipboardData.getData('text').replace(/\D/g, '').slice(0, 6);
     if (!pastedData) return;
 
     const newOtp = [...otpValues];
@@ -45,7 +45,7 @@ export function Login() {
     setOtpValues(newOtp);
     setOtpToken(newOtp.join(''));
     
-    const focusIndex = Math.min(pastedData.length, 7);
+    const focusIndex = Math.min(pastedData.length, 5);
     inputRefs.current[focusIndex]?.focus();
   };
 
@@ -74,14 +74,14 @@ export function Login() {
     setIsForgotPassword(false);
     setError(null);
     setOtpToken('');
-    setOtpValues(Array(8).fill(''));
+    setOtpValues(Array(6).fill(''));
   };
 
   const inputClass =
-    'w-full bg-white/5 border border-white/10 rounded-md px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary transition-all font-body text-sm';
+    'w-full bg-white/5 border border-white/10 rounded-full px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary transition-all font-body text-sm';
 
   const primaryButtonClass =
-    'w-full bg-primary py-3 rounded-md font-headline font-semibold text-sm tracking-wide text-white hover:bg-primary/90 hover:shadow-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed';
+    'w-full bg-primary py-3 rounded-full font-headline font-semibold text-sm tracking-wide text-white hover:bg-primary/90 hover:shadow-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed';
 
   const handleVerifyOtp = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -129,7 +129,7 @@ export function Login() {
         <div className="archive-grain pointer-events-none"></div>
         <div className="fixed inset-0 bg-custom-image z-0 pointer-events-none"></div>
 
-        <div className="w-full max-w-md space-y-6 text-center bg-zinc-950/80 backdrop-blur-md p-8 rounded-xl border border-white/10 shadow-2xl relative z-10 mx-4">
+        <div className="w-full max-w-md space-y-6 text-center glass-panel p-8 rounded-3xl relative z-10 mx-4">
           <div className="w-14 h-14 rounded-full bg-green-500/10 mx-auto flex items-center justify-center border border-green-500/20">
             <Mail className="h-7 w-7 text-green-400 opacity-90" strokeWidth={2} />
           </div>
@@ -137,7 +137,7 @@ export function Login() {
             Verify Email
           </h2>
           <p className="text-xs text-purple-200/60 uppercase tracking-widest font-bold leading-relaxed">
-            We sent an 8-digit code to<br />
+            We sent a 6-digit code to<br />
             <span className="text-white opacity-90 lowercase normal-case tracking-normal font-medium text-sm mt-1 block">{email}</span>
           </p>
           
@@ -149,7 +149,7 @@ export function Login() {
                   ref={(el) => { inputRefs.current[index] = el; }}
                   type="text"
                   maxLength={1}
-                  className="w-[11%] aspect-square bg-white/5 border border-white/10 rounded-md text-white font-headline font-bold text-center text-lg focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary transition-all"
+                  className="w-[14%] aspect-square bg-white/5 border border-white/10 rounded-md text-white font-headline font-bold text-center text-lg focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary transition-all"
                   value={value}
                   onChange={(e) => handleOtpChange(index, e.target.value)}
                   onKeyDown={(e) => handleOtpKeyDown(index, e)}
@@ -161,7 +161,7 @@ export function Login() {
 
             <button
               type="submit"
-              disabled={loading || otpToken.length !== 8}
+              disabled={loading || otpToken.length !== 6}
               className={primaryButtonClass}
             >
               {loading ? 'Verifying...' : 'Verify Code'}
@@ -187,7 +187,7 @@ export function Login() {
         <div className="archive-grain pointer-events-none"></div>
         <div className="fixed inset-0 bg-custom-image z-0 pointer-events-none"></div>
 
-        <div className="w-full max-w-sm space-y-6 bg-zinc-950/80 backdrop-blur-md p-8 rounded-xl relative z-10 mx-4 border border-white/10 shadow-2xl">
+        <div className="w-full max-w-sm space-y-6 glass-panel p-8 rounded-3xl relative z-10 mx-4">
           <div className="text-center">
             <h2 className="text-2xl font-bold tracking-tight text-white font-headline mb-1">
               Reset Password
@@ -231,7 +231,7 @@ export function Login() {
       <div className="archive-grain pointer-events-none"></div>
       <div className="fixed inset-0 bg-custom-image z-0 pointer-events-none"></div>
 
-      <div className="w-full max-w-sm space-y-6 bg-zinc-950/80 backdrop-blur-md p-8 rounded-xl relative z-10 mx-4 border border-white/10 shadow-2xl">
+      <div className="w-full max-w-sm space-y-6 glass-panel p-8 rounded-3xl relative z-10 mx-4">
         <div className="text-center">
           <div className="w-10 h-10 rounded-full bg-primary mx-auto mb-4 flex items-center justify-center">
             <span className="material-symbols-outlined text-white text-xl">star</span>
@@ -239,8 +239,8 @@ export function Login() {
           <h2 className="text-2xl font-bold tracking-tight text-white font-headline mb-1">
             {isSignUp ? 'Create Account' : 'Welcome Back'}
           </h2>
-          <p className="text-[11px] uppercase tracking-widest text-white/50 font-medium">
-            Arcturus AI Standard
+          <p className="text-[11px] uppercase tracking-widest text-purple-300/60 font-medium">
+            Arcturus AI Midnight
           </p>
         </div>
         

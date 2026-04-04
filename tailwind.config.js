@@ -8,14 +8,6 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: '#000000',
-        foreground: '#ffffff',
-        muted: {
-          DEFAULT: '#1a1a1a',
-          foreground: '#a0a0a0',
-        },
-        accent: '#333333',
-        'app-border': '#222222',
         "surface-container-high": "#2a2a2a",
         "tertiary": "#fdb78e",
         "primary-fixed": "#eaddff",
@@ -44,6 +36,7 @@ export default {
         "primary": "#7c3aed",
         "error-container": "#93000a",
         "surface-bright": "#3a3939",
+        "background": "#000000",
         "surface-container-lowest": "#0e0e0e",
         "on-surface": "#ffffff",
         "inverse-primary": "#6950a2",
@@ -64,9 +57,15 @@ export default {
         "on-tertiary": "#4f2506"
       },
       fontFamily: {
-        "headline": ["Space Grotesk", "sans-serif"],
-        "body": ["Space Grotesk", "sans-serif"],
-        "label": ["Space Grotesk", "sans-serif"]
+        "headline": ["Epilogue"],
+        "body": ["Inter"],
+        "label": ["Inter"]
+      },
+      borderRadius: {
+        "DEFAULT": "1rem",
+        "lg": "2rem",
+        "xl": "3rem",
+        "full": "9999px"
       }
     },
   },
