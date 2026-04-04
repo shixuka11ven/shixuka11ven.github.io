@@ -8,6 +8,7 @@ export function Login() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [isSignUp, setIsSignUp] = useState(false);
+  const [isForgotPassword, setIsForgotPassword] = useState(false);
   const [emailSent, setEmailSent] = useState(false);
   const [otpToken, setOtpToken] = useState('');
   const [otpValues, setOtpValues] = useState<string[]>(Array(8).fill(''));
@@ -70,6 +71,7 @@ export function Login() {
   const resetToSignIn = () => {
     setEmailSent(false);
     setIsSignUp(false);
+    setIsForgotPassword(false);
     setError(null);
     setOtpToken('');
     setOtpValues(Array(8).fill(''));
@@ -93,6 +95,27 @@ export function Login() {
       });
       if (error) throw error;
       // Success will automatically update auth session and redirect
+    } catch (err: any) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleResetPassword = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email) {
+      setError('Please enter your email address');
+      return;
+    }
+    setLoading(true);
+    setError(null);
+    try {
+      const { error } = await supabase.auth.resetPasswordForEmail(email, {
+        redirectTo: window.location.origin,
+      });
+      if (error) throw error;
+      setError('Password reset email sent! Check your inbox.');
     } catch (err: any) {
       setError(err.message);
     } finally {
@@ -158,6 +181,51 @@ export function Login() {
     );
   }
 
+  if (isForgotPassword) {
+    return (
+      <div className="flex h-screen w-full items-center justify-center bg-black overflow-hidden font-body text-white relative">
+        <div className="archive-grain pointer-events-none"></div>
+        <div className="fixed inset-0 bg-custom-image z-0 pointer-events-none"></div>
+
+        <div className="w-full max-w-sm space-y-6 bg-zinc-950/80 backdrop-blur-md p-8 rounded-xl relative z-10 mx-4 border border-white/10 shadow-2xl">
+          <div className="text-center">
+            <h2 className="text-2xl font-bold tracking-tight text-white font-headline mb-1">
+              Reset Password
+            </h2>
+            <p className="text-[11px] uppercase tracking-widest text-white/50 font-medium">
+              Enter email for reset link
+            </p>
+          </div>
+          
+          <form onSubmit={handleResetPassword} className="mt-6 space-y-5">
+            <input
+              type="email"
+              required
+              className={inputClass}
+              placeholder="Email Address"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            {error && <p className={`text-sm text-center py-2 rounded-lg border ${error.includes('sent') ? 'text-green-400 bg-green-500/10 border-green-500/20' : 'text-red-400 bg-red-500/10 border-red-500/20'}`}>{error}</p>}
+            
+            <button type="submit" disabled={loading} className={`${primaryButtonClass} mt-2`}>
+              {loading ? 'Processing...' : 'Send Reset Link'}
+            </button>
+          </form>
+          
+          <div className="text-center pt-2">
+            <button
+              onClick={resetToSignIn}
+              className="text-xs text-purple-300/60 hover:text-white transition-colors font-bold tracking-wide flex items-center justify-center gap-1 w-full"
+            >
+              <span className="material-symbols-outlined text-[14px] group-hover:-translate-x-1 transition-transform">arrow_back</span> Back to Sign In
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="flex h-screen w-full items-center justify-center bg-black overflow-hidden font-body text-white relative">
       <div className="archive-grain pointer-events-none"></div>
@@ -204,13 +272,21 @@ export function Login() {
           </button>
         </form>
         
-        <div className="text-center pt-2">
+        <div className="text-center pt-2 flex flex-col gap-3">
           <button
             onClick={() => { setIsSignUp(!isSignUp); setError(null); }}
             className="text-xs text-purple-300/60 hover:text-white transition-colors font-bold tracking-wide"
           >
             {isSignUp ? 'Already have an account? Sign In' : "Don't have an account? Sign Up"}
           </button>
+          {!isSignUp && (
+            <button
+              onClick={() => { setIsForgotPassword(true); setError(null); }}
+              className="text-xs text-purple-300/60 hover:text-white transition-colors font-bold tracking-wide"
+            >
+              Forgot Password?
+            </button>
+          )}
         </div>
       </div>
     </div>
