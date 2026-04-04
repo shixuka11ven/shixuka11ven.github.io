@@ -63,16 +63,10 @@ export default {
         "surface-variant": "#353534",
         "on-tertiary": "#4f2506"
       },
-      borderRadius: {
-        "DEFAULT": "1rem",
-        "lg": "2rem",
-        "xl": "3rem",
-        "full": "9999px"
-      },
       fontFamily: {
-        "headline": ["Epilogue", "sans-serif"],
-        "body": ["Inter", "sans-serif"],
-        "label": ["Inter", "sans-serif"]
+        "headline": ["Space Grotesk", "sans-serif"],
+        "body": ["Space Grotesk", "sans-serif"],
+        "label": ["Space Grotesk", "sans-serif"]
       }
     },
   },
