@@ -7,7 +7,7 @@
 }
 
 body {
-  font-family: "Space Grotesk", sans-serif;
+  font-family: "Inter", sans-serif;
   background-color: #000;
   color: #fff;
   overflow-x: hidden;
@@ -19,10 +19,10 @@ body {
 }
 
 .glass-panel {
-  background: rgba(20, 10, 40, 0.4);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: rgba(20, 10, 40, 0.6);
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .archive-grain {
@@ -33,16 +33,14 @@ body {
   height: 100%;
   pointer-events: none;
   z-index: 9999;
-  opacity: 0.02;
+  opacity: 0.03;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
 }
 
 .bg-custom-image {
-  background-image: linear-gradient(rgba(10, 5, 20, 0.85), rgba(10, 5, 20, 0.95)), url(https://lh3.googleusercontent.com/aida/ADBb0uhz9_pkMgWLMfd9HPuc0voju5AQGho6lbhoamHPGKhci8hmutMtfXm24-_YWNbvrJKr7C5r1uVES3z8yZ2zrwAzJQ3cLUeGxQ6wa4Nyt4Deu-ah9V8Cumnr4z0yLQVhPjUv6I0_-ye6k6jZF3RXB5G-Huk0rGcAqTBEprbjRyiq7kS1I4oG-DmyPSWPo7StvvVyXFd7-PzQdlRaiQX72sELqF6shdqrIgTBWI0n3V1KqG-Ktnqs1lhSgPmuHTGXUvQOa8yLx4LH);
+  background-image: linear-gradient(rgba(10, 5, 20, 0.8), rgba(10, 5, 20, 0.9)), url(https://lh3.googleusercontent.com/aida/ADBb0uhz9_pkMgWLMfd9HPuc0voju5AQGho6lbhoamHPGKhci8hmutMtfXm24-_YWNbvrJKr7C5r1uVES3z8yZ2zrwAzJQ3cLUeGxQ6wa4Nyt4Deu-ah9V8Cumnr4z0yLQVhPjUv6I0_-ye6k6jZF3RXB5G-Huk0rGcAqTBEprbjRyiq7kS1I4oG-DmyPSWPo7StvvVyXFd7-PzQdlRaiQX72sELqF6shdqrIgTBWI0n3V1KqG-Ktnqs1lhSgPmuHTGXUvQOa8yLx4LH);
   background-size: cover;
   background-position: center;
-  filter: blur(8px);
-  transform: scale(1.05);
 }
 
 .portrait-blur {
@@ -58,5 +56,5 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-accent rounded-full;
+  @apply bg-primary rounded-full;
 }
