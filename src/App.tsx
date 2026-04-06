@@ -191,13 +191,31 @@ function ChatApp() {
 
   const performSendMessage = async (content: string) => {
     if (!user) {
-      setPendingMessage(content);
-      setShowAuthDialog(true);
+      // Demo Mode for unauthenticated users
+      const userMessage: Message = {
+        id: `local-user-${Date.now()}`,
+        content,
+        sender_id: 'local-user',
+        created_at: new Date().toISOString(),
+      };
+      
+      // If we're on the home screen, we need to transition to a 'demo' chat view
+      if (!currentChat) {
+        const demoChat: Chat = {
+          id: 'demo-chat',
+          title: 'Demo Conversation',
+          created_at: new Date().toISOString(),
+        };
+        setCurrentChat(demoChat);
+      }
+      
+      setMessages((prev) => [...prev, userMessage]);
+      simulateAiResponse(content);
       return;
     }
 
     let targetChat = currentChat;
-    if (!targetChat) {
+    if (!targetChat || targetChat.id === 'demo-chat') {
       targetChat = await createChat();
       if (!targetChat) return;
     }
@@ -235,7 +253,7 @@ function ChatApp() {
 
   if (loading) return null;
 
-  const isOwnMessage = (msg: Message) => msg.sender_id === user?.id;
+  const isOwnMessage = (msg: Message) => msg.sender_id === user?.id || msg.sender_id === 'local-user';
   const isAiMessage = (msg: Message) => msg.sender_id === 'ai-arcturus';
   const displayName = user?.user_metadata?.full_name || user?.email?.split('@')[0] || null;
 
