@@ -140,10 +140,10 @@ export function AuthDialog({ open, onClose }: AuthDialogProps) {
   if (!open) return null;
 
   const inputClass =
-    'w-full bg-white/5 border border-white/10 rounded-full px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary transition-all font-body text-sm';
+    'w-full bg-white/5 border border-border-subtle rounded-[6px] px-4 py-3 text-white placeholder-on-surface-faint outline-none ring-0 focus:outline-none focus:ring-0 focus:border-primary-border transition-all font-space text-sm';
 
   const primaryButtonClass =
-    'w-full bg-primary py-3 rounded-full font-headline font-semibold text-sm tracking-wide text-white hover:bg-primary/90 hover:shadow-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed';
+    'w-full flex items-center justify-center bg-primary py-3 rounded-[6px] font-space font-semibold text-[13px] tracking-wide text-[#fafafa] border border-primary-border hover:bg-primary-hover hover:border-primary-border-hover transition-all duration-200 ease-out disabled:opacity-50 disabled:cursor-not-allowed outline-none';
 
   // Google icon SVG
   const GoogleIcon = () => (
@@ -269,13 +269,13 @@ export function AuthDialog({ open, onClose }: AuthDialogProps) {
         </button>
 
         <div className="text-center">
-          <div className="w-10 h-10 rounded-full bg-primary mx-auto mb-4 flex items-center justify-center shadow-[0_0_20px_rgba(124,58,237,0.4)]">
-            <span className="material-symbols-outlined text-white text-xl">star</span>
+          <div className="w-10 h-10 mx-auto mb-4 flex items-center justify-center">
+            <img src="/logo.png" alt="Arcturus Logo" className="w-10 h-10 object-contain drop-shadow-[0_0_12px_rgba(155,50,150,0.6)]" />
           </div>
-          <h2 className="text-2xl font-bold tracking-tight text-white font-headline mb-1">
-            {isSignUp ? 'Create Account' : 'Welcome Back'}
+          <h2 className="text-2xl font-bold tracking-tight text-white font-space mb-1">
+            {isSignUp ? 'Create an account' : 'Welcome back'}
           </h2>
-          <p className="text-[11px] uppercase tracking-widest text-purple-300/60 font-medium">
+          <p className="text-[11px] uppercase tracking-widest text-on-surface-faint font-medium">
             {isSignUp ? 'Sign up to start chatting' : 'Sign in to continue chatting'}
           </p>
         </div>
@@ -287,7 +287,7 @@ export function AuthDialog({ open, onClose }: AuthDialogProps) {
               <button
                 onClick={() => handleOAuth('google')}
                 disabled={loading}
-                className="w-full flex items-center justify-center gap-3 bg-white/5 border border-white/10 rounded-full px-4 py-3 text-white hover:bg-white/10 hover:border-white/20 transition-all font-headline font-semibold text-sm disabled:opacity-50"
+                className="w-full flex items-center justify-center gap-3 bg-white/5 border border-white/10 rounded-[6px] px-4 py-3 text-white hover:bg-white/10 hover:border-white/20 transition-all font-space font-semibold text-[15px] disabled:opacity-50"
               >
                 <GoogleIcon />
                 Continue with Google
@@ -295,7 +295,7 @@ export function AuthDialog({ open, onClose }: AuthDialogProps) {
               <button
                 onClick={() => handleOAuth('discord')}
                 disabled={loading}
-                className="w-full flex items-center justify-center gap-3 bg-white/5 border border-white/10 rounded-full px-4 py-3 text-white hover:bg-white/10 hover:border-white/20 transition-all font-headline font-semibold text-sm disabled:opacity-50"
+                className="w-full flex items-center justify-center gap-3 bg-white/5 border border-white/10 rounded-[6px] px-4 py-3 text-white hover:bg-white/10 hover:border-white/20 transition-all font-space font-semibold text-[15px] disabled:opacity-50"
               >
                 <DiscordIcon />
                 Continue with Discord

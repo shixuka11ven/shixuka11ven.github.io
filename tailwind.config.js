@@ -8,65 +8,45 @@ export default {
   theme: {
     extend: {
       colors: {
-        "surface-container-high": "#2a2a2a",
-        "tertiary": "#fdb78e",
-        "primary-fixed": "#eaddff",
-        "on-surface-variant": "#cbc4d2",
-        "on-primary": "#ffffff",
-        "surface-container-highest": "#353534",
-        "secondary": "#cec0e8",
-        "on-secondary": "#352b4a",
-        "outline-variant": "#494550",
-        "on-background": "#e5e2e1",
-        "surface-dim": "#131313",
-        "error": "#ffb4ab",
-        "surface-container-low": "#1c1b1b",
-        "secondary-fixed-dim": "#cec0e8",
-        "on-error-container": "#ffdad6",
-        "inverse-surface": "#e5e2e1",
-        "tertiary-fixed-dim": "#fdb78e",
-        "on-primary-container": "#eaddff",
-        "surface-tint": "#d1bcff",
-        "surface-container": "#201f1f",
-        "inverse-on-surface": "#313030",
-        "surface": "#131313",
-        "on-error": "#690005",
-        "on-secondary-fixed-variant": "#4b4162",
-        "on-secondary-container": "#bcafd6",
-        "primary": "#7c3aed",
-        "error-container": "#93000a",
-        "surface-bright": "#3a3939",
-        "background": "#000000",
-        "surface-container-lowest": "#0e0e0e",
-        "on-surface": "#ffffff",
-        "inverse-primary": "#6950a2",
-        "on-primary-fixed-variant": "#503788",
-        "on-secondary-fixed": "#1f1634",
-        "on-primary-fixed": "#24005b",
-        "on-tertiary-container": "#bc7e59",
-        "secondary-container": "#4b4162",
-        "on-tertiary-fixed-variant": "#6a3a1b",
-        "on-tertiary-fixed": "#321200",
-        "tertiary-container": "#411a00",
-        "secondary-fixed": "#eaddff",
-        "primary-fixed-dim": "#d1bcff",
-        "tertiary-fixed": "#ffdbc8",
-        "primary-container": "#4c1d95",
-        "outline": "#948e9c",
-        "surface-variant": "#353534",
-        "on-tertiary": "#4f2506"
+        /* ── Brand Colors ─────────────────────────────────── */
+        "primary":           "#620046",   /* Main accent — deep magenta */
+        "primary-hover":     "#772e64",   /* Lighter hover state */
+        "primary-border":    "#831363",   /* Border/outline accent */
+        "primary-border-hover": "#c53ead", /* Border hover state */
+        "primary-glow":      "rgba(98, 0, 70, 0.4)", /* Box-shadow glow */
+
+        /* ── Surface Colors ───────────────────────────────── */
+        "surface":           "#09090b",   /* App background */
+        "surface-raised":    "#0E0E10",   /* Sidebar, elevated panels */
+        "surface-card":      "#18181A",   /* Cards, chat bubbles, inputs */
+        "surface-hover":     "#1f1f23",   /* Hover state on surfaces */
+
+        /* ── Text Colors ──────────────────────────────────── */
+        "on-surface":        "#ffffff",
+        "on-surface-muted":  "rgba(255, 255, 255, 0.6)",
+        "on-surface-faint":  "rgba(255, 255, 255, 0.4)",
+        "on-surface-ghost":  "rgba(255, 255, 255, 0.15)",
+
+        /* ── Border Colors ────────────────────────────────── */
+        "border-default":    "rgba(255, 255, 255, 0.05)",
+        "border-subtle":     "rgba(255, 255, 255, 0.08)",
+        "border-hover":      "rgba(255, 255, 255, 0.12)",
+
+        /* ── Feedback ─────────────────────────────────────── */
+        "error":             "#ffb4ab",
+        "error-container":   "#93000a",
       },
       fontFamily: {
-        "headline": ["Epilogue"],
-        "body": ["Inter"],
-        "label": ["Inter"]
+        "sans":     ["Space Grotesk", "sans-serif"],
+        "headline": ["Space Grotesk", "sans-serif"],
+        "body":     ["Space Grotesk", "sans-serif"],
+        "space":    ["Space Grotesk", "sans-serif"],
       },
       borderRadius: {
-        "DEFAULT": "1rem",
-        "lg": "2rem",
-        "xl": "3rem",
-        "full": "9999px"
-      }
+        /* Keep Tailwind defaults, just add custom ones */
+        "2xl": "1rem",
+        "3xl": "1.5rem",
+      },
     },
   },
   plugins: [
