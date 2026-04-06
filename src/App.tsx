@@ -284,13 +284,15 @@ function ChatApp() {
                 {/* Action chips */}
                 <div className="flex flex-wrap justify-center gap-2 md:gap-3">
                   {[
-                    { icon: 'image', label: 'Create image' },
-                    { icon: 'analytics', label: 'Analyze data' },
-                    { icon: 'code', label: 'Write code' },
-                    { icon: 'history_edu', label: 'Summarize PDF' },
-                  ].map(({ icon, label }) => (
+                    { icon: 'image', label: 'Create image', sample: 'Create an image of a futuristic city at night with neon lights reflecting off rain-soaked streets.' },
+                    { icon: 'analytics', label: 'Analyze data', sample: 'Analyze this dataset for trends: month, revenue, users — Jan: $12k, 340 | Feb: $15k, 410 | Mar: $11k, 290.' },
+                    { icon: 'code', label: 'Write code', sample: 'Write a Python function that takes a list of numbers and returns the top 3 largest values.' },
+                    { icon: 'history_edu', label: 'Summarize PDF', sample: 'Summarize the key points of a research paper about the effects of sleep deprivation on cognitive performance.' },
+                  ].map(({ icon, label, sample }) => (
                     <button
                       key={label}
+                      type="button"
+                      onClick={() => setNewMessage(sample)}
                       className="px-4 py-2.5 md:px-6 md:py-3 rounded-full bg-white/5 backdrop-blur-md text-white border border-white/10 hover:bg-white/10 transition-all flex items-center gap-2"
                     >
                       <span className="material-symbols-outlined text-primary text-sm">{icon}</span>
